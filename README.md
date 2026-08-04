@@ -1,25 +1,39 @@
-# Korak po korak
+# Kroatisch reaktivieren – Version 0.3
 
-Interaktiver Kroatischkurs für Erwachsene mit passivem Vorwissen.
+Version 0.3 ist die erste zusammenhängende Plattformfassung.
 
-## Struktur
+## Enthalten
 
-- `index.html` – Kursübersicht
-- `lesson.html` – gemeinsame Lektionsansicht
-- `css/style.css` – gemeinsames Designsystem
-- `js/app.js` – Startseite und Gesamtfortschritt
-- `js/lesson.js` – wiederverwendbare Lektionslogik
-- `data/lesson-01.js` – Inhalt von Lektion 1
-- `data/lesson-02.js` – Platzhalter für Lektion 2
-- `data/lesson-03.js` – Platzhalter für Lektion 3
+- Startseite mit Tageslektion und Kursweg
+- vollständige interaktive Lektion 1
+- Hören über die Sprachausgabe des Browsers (`hr-HR`)
+- Satzbau-, Auswahl-, Zuordnungs- und Lückenübungen
+- eigene Sätze und Lektionsnotizen
+- Lernmemory für Lieblingssätze und schwierige Aufgaben
+- lokaler Lernstand über `localStorage`
+- Fortschrittsanzeige, Aktivität und Lernserie
+- responsive Darstellung und Fokusmodus
 
-## Veröffentlichung mit GitHub Pages
+## Lokal starten
 
-1. Repository öffnen
-2. `Settings`
-3. links `Pages`
-4. unter `Build and deployment`: `Deploy from a branch`
-5. Branch `main`, Ordner `/ (root)`
-6. `Save`
+Am zuverlässigsten über einen kleinen lokalen Webserver:
 
-Nach einigen Minuten erscheint dort die veröffentlichte Adresse.
+```bash
+python -m http.server 8000
+```
+
+Danach im Browser öffnen:
+
+```text
+http://localhost:8000
+```
+
+Alternativ kann `index.html` direkt geöffnet werden. Je nach Browser kann die Sprachausgabe dann eingeschränkt sein.
+
+## GitHub Pages
+
+Den Inhalt dieses Ordners in das Repository kopieren, committen und pushen. In GitHub unter **Settings → Pages** als Quelle den Branch `main` und den Ordner `/ (root)` auswählen.
+
+## Daten
+
+Alle persönlichen Lernstände liegen ausschließlich im jeweiligen Browser. Beim Löschen der Browserdaten oder Wechsel des Geräts werden sie nicht automatisch übertragen.

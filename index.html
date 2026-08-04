@@ -1,51 +1,115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Korak po korak – Kroatisch sprechen</title>
-  <meta name="description" content="Interaktiver Kroatischkurs für Erwachsene mit passivem Vorwissen.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#215e78">
+  <meta name="description" content="Kroatisch reaktivieren – eine alltagsnahe Lernplattform.">
+  <title>Kroatisch reaktivieren</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="data/lessons.js" defer></script>
+  <script src="js/app.js" defer></script>
 </head>
-<body>
-  <header class="hero">
-    <div class="hero__inner">
-      <p class="eyebrow">Kroatisch reaktivieren · Sprechen lernen</p>
-      <h1>Korak po korak</h1>
-      <p class="hero__lead">Kleine Schritte. Echte Situationen. Endlich sprechen.</p>
-      <a class="button button--primary" href="lesson.html?id=1">Lektion 1 beginnen</a>
+<body data-page="home">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html"><span class="brand-mark">HR</span><span><strong>Kroatisch</strong><small>reaktivieren</small></span></a>
+      <nav>
+        <a class="nav-link active" href="#heute">Heute</a>
+        <a class="nav-link" href="#lektionen">Lektionen</a>
+        <a class="nav-link" href="#wiederholen">Wiederholen <b id="review-badge">0</b></a>
+        <a class="nav-link" href="#notizbuch">Notizbuch</a>
+        <a class="nav-link" href="#fortschritt">Fortschritt</a>
+      </nav>
+      <div class="sidebar-foot">
+        <strong id="streak">0 Tage</strong>
+        <span>am Stück gelernt</span>
+        <small>Der Lernstand bleibt lokal in deinem Browser.</small>
+      </div>
+    </aside>
+
+    <div class="main-frame">
+      <header class="topbar">
+        <button class="icon-btn mobile-only" id="menu-button" aria-label="Navigation öffnen">☰</button>
+        <div><span class="eyebrow" id="date-label">Heute</span><strong id="welcome">Dobro došla, Regina.</strong></div>
+        <button class="avatar" id="profile-button" aria-label="Profil öffnen">R</button>
+      </header>
+
+      <main id="main">
+        <section id="heute" class="section hero">
+          <div class="hero-copy">
+            <span class="kicker">Dein nächster Schritt</span>
+            <h1>Ein kurzer Plausch mit den Nachbarn</h1>
+            <p>Reaktiviere vertraute Wörter und baue daraus spontane Sätze über Wetter, Spaziergang und Garten.</p>
+            <div class="meta-row"><span>30–40 Minuten</span><span>Sprechen im Mittelpunkt</span></div>
+            <div class="button-row">
+              <a class="button primary" href="lesson.html?id=lekcija-1" id="continue-button">Lektion beginnen</a>
+              <button class="button secondary" id="overview-button">Überblick</button>
+            </div>
+          </div>
+          <div class="progress-ring" id="progress-ring"><div><strong id="progress-number">0%</strong><span>geschafft</span></div></div>
+        </section>
+
+        <section class="quick-grid" aria-label="Tagesübersicht">
+          <article class="quick-card"><span class="quick-icon">🔊</span><div><small>Heute hören</small><strong>Danas je divan dan, zar ne?</strong></div><button class="icon-btn" data-speak="Danas je divan dan, zar ne?" aria-label="Satz anhören">▶</button></article>
+          <article class="quick-card"><span class="quick-icon">◎</span><div><small>Heutige Mission</small><strong>Einen echten Grußsatz laut sprechen</strong></div><a class="icon-btn" href="lesson.html?id=lekcija-1#mission" aria-label="Zur Mission">→</a></article>
+          <article class="quick-card"><span class="quick-icon">↻</span><div><small>Wiederholen</small><strong><span id="review-quick">0</span> Karten warten</strong></div><button class="icon-btn" data-action="review" aria-label="Wiederholung starten">→</button></article>
+        </section>
+
+        <section id="lektionen" class="section">
+          <div class="section-head"><div><span class="kicker">Dein Kursweg</span><h2>Lektionen</h2></div><span>Alltag zuerst, Grammatik im Muster</span></div>
+          <div class="lesson-grid" id="lesson-grid"></div>
+        </section>
+
+        <section id="wiederholen" class="section">
+          <div class="section-head"><div><span class="kicker">Lernmemory</span><h2>Wiederholen</h2></div><button class="button secondary small" data-action="review">Runde starten</button></div>
+          <div id="review-area" class="surface"></div>
+        </section>
+
+        <section id="notizbuch" class="section">
+          <div class="section-head"><div><span class="kicker">Deine Wörter, deine Sätze</span><h2>Notizbuch</h2></div><button class="button secondary small" id="new-note">Neue Notiz</button></div>
+          <div class="notes-tools"><input type="search" id="notes-search" placeholder="Notizen durchsuchen"><select id="notes-filter"><option value="all">Alle Notizen</option><option value="pinned">Angeheftet</option><option value="lesson">Aus Lektionen</option></select></div>
+          <div class="notes-grid" id="notes-grid"></div>
+        </section>
+
+        <section id="fortschritt" class="section">
+          <div class="section-head"><div><span class="kicker">Nicht Punkte, sondern Können</span><h2>Dein Fortschritt</h2></div></div>
+          <div class="progress-grid">
+            <article class="surface"><h3>Aktive Fähigkeiten</h3><div id="skills"></div></article>
+            <article class="surface"><h3>Die letzten sieben Tage</h3><div class="activity-chart" id="activity-chart"></div><p id="activity-note"></p></article>
+          </div>
+        </section>
+      </main>
+
+      <footer><span>Kroatisch reaktivieren · Version 0.3</span><button class="text-button" id="reset-button">Lokale Lerndaten zurücksetzen</button></footer>
     </div>
-  </header>
+  </div>
 
-  <main class="shell">
-    <section class="intro card">
-      <div>
-        <span class="badge">Dein Kurs</span>
-        <h2>Vom Verstehen zum Sprechen</h2>
-        <p>Du kennst mehr Kroatisch, als du spontan abrufen kannst. Deshalb arbeiten wir nicht mit langen Vokabellisten, sondern mit kurzen Dialogen, klaren Mustern und sofortigem Transfer.</p>
-      </div>
-      <div class="progress-card">
-        <span>Gesamtfortschritt</span>
-        <strong id="courseProgressText">0 von 3 Lektionen</strong>
-        <div class="progress"><div id="courseProgressBar" class="progress__fill"></div></div>
-      </div>
-    </section>
+  <div class="backdrop" id="backdrop"></div>
 
-    <section>
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow eyebrow--dark">Die ersten drei Lektionen</p>
-          <h2>Alltag in Dalmatien</h2>
-        </div>
-      </div>
-      <div id="lessonGrid" class="lesson-grid" aria-live="polite"></div>
-    </section>
-  </main>
+  <dialog id="note-dialog">
+    <form method="dialog" id="note-form" class="dialog-card">
+      <div class="dialog-head"><div><span class="kicker">Notizbuch</span><h2 id="note-heading">Neue Notiz</h2></div><button value="cancel" class="icon-btn" aria-label="Schließen">×</button></div>
+      <input type="hidden" id="note-id">
+      <label>Titel<input id="note-title" maxlength="80" placeholder="Zum Beispiel: Satz für Marija"></label>
+      <label>Notiz<textarea id="note-text" rows="7" maxlength="1200" required placeholder="Wörter, Sätze, Beobachtungen …"></textarea></label>
+      <label class="check"><input id="note-pinned" type="checkbox"> Anheften</label>
+      <div class="button-row right"><button value="cancel" class="button secondary">Abbrechen</button><button type="submit" class="button primary">Speichern</button></div>
+    </form>
+  </dialog>
 
-  <footer class="footer">
-    <p>Korak po korak · Ein interaktiver Kroatischkurs</p>
-  </footer>
+  <dialog id="profile-dialog">
+    <form method="dialog" id="profile-form" class="dialog-card">
+      <div class="dialog-head"><div><span class="kicker">Einstellungen</span><h2>Dein Lernprofil</h2></div><button value="cancel" class="icon-btn" aria-label="Schließen">×</button></div>
+      <label>Name<input id="profile-name" maxlength="40"></label>
+      <label>Tägliches Lernziel<select id="profile-goal"><option value="10">10 Minuten</option><option value="20">20 Minuten</option><option value="30">30 Minuten</option><option value="45">45 Minuten</option><option value="60">60 Minuten</option></select></label>
+      <div class="button-row right"><button value="cancel" class="button secondary">Abbrechen</button><button type="submit" class="button primary">Speichern</button></div>
+    </form>
+  </dialog>
 
-  <script src="js/app.js"></script>
+  <dialog id="overview-dialog"><div class="dialog-card wide"><div class="dialog-head"><div><span class="kicker">Lektion 1</span><h2>Aufbau der Lektion</h2></div><button class="icon-btn" data-close-dialog aria-label="Schließen">×</button></div><ol id="phase-list" class="phase-list"></ol><div class="button-row right"><a href="lesson.html?id=lekcija-1" class="button primary">Lektion öffnen</a></div></div></dialog>
+  <dialog id="review-dialog"><div class="dialog-card review-dialog"><div class="dialog-head"><div><span class="kicker">Wiederholungsrunde</span><h2 id="review-title">Karte</h2></div><button class="icon-btn" data-close-dialog aria-label="Schließen">×</button></div><div id="review-session"></div></div></dialog>
+  <div class="toast" id="toast" aria-live="polite"></div>
 </body>
 </html>

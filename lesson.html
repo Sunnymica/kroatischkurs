@@ -1,43 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lektion – Korak po korak</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#215e78">
+  <title>Lektion · Kroatisch reaktivieren</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="data/lessons.js" defer></script>
+  <script src="js/app.js" defer></script>
 </head>
-<body class="lesson-page">
+<body data-page="lesson">
+  <a class="skip-link" href="#lesson-main">Zum Inhalt springen</a>
   <header class="lesson-topbar">
-    <a href="index.html" class="back-link">← Übersicht</a>
-    <div class="lesson-topbar__title">
-      <span id="lessonNumber">Lektion</span>
-      <strong id="lessonTitle">Wird geladen …</strong>
-    </div>
-    <button id="resetLesson" class="icon-button" type="button">Neu starten</button>
+    <a class="brand compact" href="index.html"><span class="brand-mark">HR</span><span><strong>Kroatisch</strong><small>reaktivieren</small></span></a>
+    <div class="top-progress"><div><span id="lesson-label">Lektion</span><strong id="lesson-percent">0%</strong></div><div class="bar"><span id="lesson-bar"></span></div></div>
+    <a class="icon-btn" href="index.html" aria-label="Lektion schließen">×</a>
   </header>
 
-  <main class="shell shell--lesson">
-    <section class="lesson-hero card">
-      <div>
-        <p id="lessonEyebrow" class="eyebrow eyebrow--dark"></p>
-        <h1 id="lessonHeadline"></h1>
-        <p id="lessonIntro"></p>
-      </div>
-      <div class="lesson-progress">
-        <span id="phaseLabel">Phase 1 von 6</span>
-        <div class="progress"><div id="lessonProgressBar" class="progress__fill"></div></div>
-      </div>
-    </section>
+  <div class="lesson-layout">
+    <aside class="lesson-map">
+      <span class="kicker">Lektion <span id="lesson-number">1</span></span>
+      <h1 id="lesson-title">Lektion</h1>
+      <p id="lesson-subtitle"></p>
+      <ol id="lesson-steps"></ol>
+      <small>Dein Stand wird automatisch gespeichert.</small>
+    </aside>
 
-    <nav id="phaseNav" class="phase-nav" aria-label="Lektionsphasen"></nav>
-    <section id="lessonContent"></section>
-  </main>
+    <main id="lesson-main" class="lesson-main" tabindex="-1"><div id="lesson-stage"></div></main>
 
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <aside class="lesson-tools">
+      <button id="lesson-note-button">Notiz</button>
+      <button id="vocabulary-button">Wörter</button>
+      <button id="focus-button">Fokus</button>
+    </aside>
+  </div>
 
-  <script src="data/lesson-01.js"></script>
-  <script src="data/lesson-02.js"></script>
-  <script src="data/lesson-03.js"></script>
-  <script src="js/lesson.js"></script>
+  <nav class="lesson-nav"><button class="button secondary" id="prev-step">← Zurück</button><span id="step-count">1 von 1</span><button class="button primary" id="next-step">Weiter →</button></nav>
+
+  <dialog id="lesson-note-dialog"><form method="dialog" id="lesson-note-form" class="dialog-card"><div class="dialog-head"><div><span class="kicker">Lektionsnotiz</span><h2>Was möchtest du festhalten?</h2></div><button value="cancel" class="icon-btn">×</button></div><label>Titel<input id="lesson-note-title" maxlength="80"></label><label>Notiz<textarea id="lesson-note-text" rows="7" required></textarea></label><label class="check"><input id="lesson-note-pinned" type="checkbox"> Im Notizbuch anheften</label><div class="button-row right"><button value="cancel" class="button secondary">Abbrechen</button><button type="submit" class="button primary">Speichern</button></div></form></dialog>
+  <dialog id="vocabulary-dialog"><div class="dialog-card wide"><div class="dialog-head"><div><span class="kicker">Lektionswörter</span><h2>Wörter und Satzbausteine</h2></div><button class="icon-btn" data-close-dialog>×</button></div><div class="vocabulary-grid" id="vocabulary-grid"></div></div></dialog>
+  <dialog id="finish-dialog"><div class="dialog-card celebration"><div class="completion-mark">✓</div><span class="kicker">Lektion abgeschlossen</span><h2>Bravo, Regina.</h2><p>Du hast die Sätze nicht nur erkannt, sondern selbst gebaut und gesprochen.</p><div id="finish-stats" class="finish-stats"></div><div class="button-row center"><button class="button secondary" id="repeat-lesson">Erneut üben</button><a class="button primary" href="index.html">Zur Übersicht</a></div></div></dialog>
+  <div class="toast" id="toast" aria-live="polite"></div>
 </body>
 </html>
