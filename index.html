@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Korak po korak – Kroatisch sprechen</title>
+  <meta name="description" content="Interaktiver Kroatischkurs für Erwachsene mit passivem Vorwissen.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__inner">
+      <p class="eyebrow">Kroatisch reaktivieren · Sprechen lernen</p>
+      <h1>Korak po korak</h1>
+      <p class="hero__lead">Kleine Schritte. Echte Situationen. Endlich sprechen.</p>
+      <a class="button button--primary" href="lesson.html?id=1">Lektion 1 beginnen</a>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="intro card">
+      <div>
+        <span class="badge">Dein Kurs</span>
+        <h2>Vom Verstehen zum Sprechen</h2>
+        <p>Du kennst mehr Kroatisch, als du spontan abrufen kannst. Deshalb arbeiten wir nicht mit langen Vokabellisten, sondern mit kurzen Dialogen, klaren Mustern und sofortigem Transfer.</p>
+      </div>
+      <div class="progress-card">
+        <span>Gesamtfortschritt</span>
+        <strong id="courseProgressText">0 von 3 Lektionen</strong>
+        <div class="progress"><div id="courseProgressBar" class="progress__fill"></div></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow eyebrow--dark">Die ersten drei Lektionen</p>
+          <h2>Alltag in Dalmatien</h2>
+        </div>
+      </div>
+      <div id="lessonGrid" class="lesson-grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Korak po korak · Ein interaktiver Kroatischkurs</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lektion – Korak po korak</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="lesson-page">
+  <header class="lesson-topbar">
+    <a href="index.html" class="back-link">← Übersicht</a>
+    <div class="lesson-topbar__title">
+      <span id="lessonNumber">Lektion</span>
+      <strong id="lessonTitle">Wird geladen …</strong>
+    </div>
+    <button id="resetLesson" class="icon-button" type="button">Neu starten</button>
+  </header>
+
+  <main class="shell shell--lesson">
+    <section class="lesson-hero card">
+      <div>
+        <p id="lessonEyebrow" class="eyebrow eyebrow--dark"></p>
+        <h1 id="lessonHeadline"></h1>
+        <p id="lessonIntro"></p>
+      </div>
+      <div class="lesson-progress">
+        <span id="phaseLabel">Phase 1 von 6</span>
+        <div class="progress"><div id="lessonProgressBar" class="progress__fill"></div></div>
+      </div>
+    </section>
+
+    <nav id="phaseNav" class="phase-nav" aria-label="Lektionsphasen"></nav>
+    <section id="lessonContent"></section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="data/lesson-01.js"></script>
+  <script src="data/lesson-02.js"></script>
+  <script src="data/lesson-03.js"></script>
+  <script src="js/lesson.js"></script>
+</body>
+</html>
